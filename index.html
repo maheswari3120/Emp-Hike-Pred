@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Salary Hike Category Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+        }
+        .container {
+            background-color: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        button {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            margin-top: 20px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 25px;
+            text-align: center;
+        }
+        .result h3 {
+            color: #333;
+        }
+        .result p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Salary Hike Predictor</h2>
+        <form method="POST" action="/predict">
+            <label for="Age">Age</label>
+            <input type="text" name="Age" required>
+
+            <label for="MonthlyIncome">Monthly Income</label>
+            <input type="text" name="MonthlyIncome" required>
+
+            <label for="TotalWorkingYears">Total Working Years</label>
+            <input type="text" name="TotalWorkingYears" required>
+
+            <label for="YearsAtCompany">Years at Company</label>
+            <input type="text" name="YearsAtCompany" required>
+
+            <label for="PerformanceRating">Performance Rating</label>
+            <input type="text" name="PerformanceRating" required>
+
+            <label for="JobLevel">Job Level</label>
+            <input type="text" name="JobLevel" required>
+
+            <label for="NumCompaniesWorked">Number of Companies Worked</label>
+            <input type="text" name="NumCompaniesWorked" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">
+            <h3>{{ prediction_text }}</h3>
+            <p>{{ percent_text }}</p>
+            <p>{{ income_text }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
